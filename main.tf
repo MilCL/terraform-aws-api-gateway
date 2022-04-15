@@ -194,6 +194,10 @@ resource "aws_api_gateway_deployment" "default" {
   stage_description = var.stage_description
   variables         = var.variables
   depends_on        = [aws_api_gateway_method.default, aws_api_gateway_integration.default]
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 # Module      : Api Gateway Client Certificate
